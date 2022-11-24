@@ -4,7 +4,7 @@
 #include <fcntl.h>
 
 #ifndef BUFFER_SIZE
-# define BUFFER_SIZE 1
+# define BUFFER_SIZE 4
 #endif
 
 int	read_line(char **s, int fd);
@@ -19,9 +19,9 @@ int	main(void)
 {
 	int fd = open("test", O_RDONLY);
 	char *res;
-	int a= 4;
+	int a=23;
 
-	while (1)
+	while (a--)
 	{
 		res = get_next_line(fd);
 		if (res == NULL)
@@ -30,10 +30,10 @@ int	main(void)
 		free(res);
 	}
 	close(fd);
-	fd = open("test3",O_RDONLY);
-	res = get_next_line(fd);
-	printf("%s\n", res);
-	free(res);
+//	fd = open("test3",O_RDONLY);
+//	res = get_next_line(fd);
+//	printf("%s\n", res);
+//	free(res);
 }
 
 char tn_strlen(char *s)
