@@ -13,3 +13,6 @@
 - after last read
 - How to know last read
 - Use Struct better
+
+## NOT PASS ;( at first try  
+- case big file 10000 kb
