@@ -1,6 +1,20 @@
 #include <unistd.h>
+#include <stdlib.h>
 #include <fcntl.h>
 #include <stdio.h>
+
+
+#ifndef BUFFER_SIZE
+# define BUFFER_SIZE 1
+#endif
+char	*ft_strappend(char *buff, char *buffer);
+void	ft_bzero(char *s, int size);
+char	*get_next_line(int fd);
+char	*check_new_line(char *str);
+char	*ft_strdup(char *str);
+void	read_file(buff, fd);
+char	*get_line(char *str);
+int		ft_strlen(char *str);
 
 int main(void)
 {
@@ -37,6 +51,7 @@ char	*get_next_line(int fd)
 		read_file(buff, fd);
 	}
 	res = get_line(buff);
+	update_buff(&buff);
 }
 
 
@@ -56,8 +71,8 @@ char	*get_line(char *str)
 	}
 	else
 	{
-		res = malloc(sizeof(char) * (len + 1));
-		res[len] = '\0';
+		res = malloc(sizeof(char) * (lens + 1));
+		res[lens] = '\0';
 	}
 	while (str + i <= last && str[i])
 	{
@@ -67,7 +82,7 @@ char	*get_line(char *str)
 	return (res);
 }
 
-void	read_file(buff, fd)
+void	read_file(char *buff, int fd)
 {
 	char	*res;
 	char	*buffer;
@@ -140,7 +155,7 @@ char	*ft_strdup(char *str)
 {
 	int	size;
 	int	i;
-	int	*res;
+	char	*res;
 	
 	i = 0;
 	if (!str)
